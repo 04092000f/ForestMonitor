@@ -17,6 +17,8 @@ def detect_green_HSV(image):
     green_percentage = percent_green(mask)
     segmented_output = cv2.bitwise_and(image, image, mask=mask)
     result_text = f"{green_percentage:.2f}% Forest Area"
+    cv2.putText(segmented_output, result_text, (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 3, cv2.LINE_AA)
     return segmented_output, result_text
 
 st.title("ForestMonitor WebApplication")
